@@ -1,0 +1,364 @@
+html{
+    box-sizing: border-box;
+    font-size: 62.5%; /* Reset para REMs 100% = 16px (default), entonces 62.5% = 10px, mucho mas facil a la hora de hacer el cambio de px a rem */
+                      /*REM: https://franciscoamk.com/unidades-de-medida-en-css/ */
+}
+/* Junto con `box-sizing: border-box;' es un snippet que te ahorra tener que estar controlando todos los anchos y altos de los contenedores para que encajen sin tener que añadir o restar px al contenedor principal */
+*, *:before, *:after { 
+    box-sizing: inherit;
+}
+
+body{
+    font-family: 'Lato', sans-serif;
+    font-size: 1.6rem;
+    line-height: 2; /*espaciado del parrafo*/
+}
+
+/***** GLOBALES *****/
+img{
+    max-width: 100%;
+}
+.contenedor{
+    max-width: 120rem; /* Tamaño máximo del contenedor */
+    margin: 0 auto; /* pone un margen de 0 arriga y abajo de todos los contenedores y margen automático a izquierda y derecha, por lo que queda centrado */
+                    /* arriba derecha abajo izquierda */ /* arriba-abajo izquierda-derecha */
+                }
+h1{
+    font-size: 3.8rem; /* 38px */
+}
+h2{
+    font-size: 3.4rem;
+}
+h3{
+    font-size: 3rem;
+}
+h4{
+    font-size: 2.6rem;
+}
+
+/***** UTILIDADES *****/
+/* Añadir aquí las funciones que mas utilizamos para tenerlas siempre a mano y no repetir código*/
+.seccion{ /*Añade un margen arriba y abajo de 20px*/
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+.fw-300{ /* Ancho de fuente a 300 */
+    font-weight: 300;
+}
+.centrar-texto{
+    text-align: center;
+}
+.d-block{
+    /* display:block -> Hace que el div ocupe toda el 100% del espacio disponible https://uniwebsidad.com/libros/referencia-css2/display# */
+    /* !important -> lo usaremos en el caso de que un elemento tiene dos clases que modifican el mismo valor, pero necesitamos que se aplique la propiedad de arriba en ese caso, ya que sino se nos jodería todo el código si lo cambiaramos debajo. */
+    display: block!important;
+}
+.contenido-centrado{
+    max-width: 80rem;
+}
+/***** BOTONES *****/
+.boton{
+    color: white; /*Color letras*/
+    text-transform: uppercase; /*letras en mayusculas*/
+    font-weight: 700; /*ancho de la fuente*/
+    text-decoration: none; /*quitar la linea de abajo de las url*/
+    font-size: 1.8rem; /*18px*/
+    padding: 1rem 3rem; /*espacio interior de 10px arriba y abajo y de 30px izquiera y derecha*/
+    margin-top: 3rem; /*separación con el elemento anterior de 30px*/
+    display: inline-block; /*mirar .d-block*/
+    text-align: center; /*centrar texto del botón*/
+    border: none; /* Quitamos los bordes. Esto es mas que nada para los input type submit, ya que los enlaces ('a') no tiene borde por defecto.*/
+}
+.boton:hover{
+    cursor: pointer; /*Cambiamos el cursor cuando el ratón se ponga encima de un botón*/
+}
+.boton-amarillo{
+    background-color: #e08709;
+}
+.boton-verde{
+    background-color: #71b100;
+}
+
+/***** HEADER *****/
+.site-header{
+    background-color: #333333;
+    padding: 1rem 0 3rem 0; /*top right bottom left */
+}
+.site-header.inicio {
+    background-image: url(../img/header.jpg); /* Seleccionar imagen. No se pone desde el archivo html */
+    background-position: center center; /*muestra la imagen desde el centro, a tamaño completo*/
+    background-size: cover; /*Crea el alto y ancho para que use el espacio que haya disponible, pero guardando las proporicones y cubriendo todo lo posible*/
+    height: 100vh; /* 100 viewport height: pone la altura de la pantalla para la imagen del fondo */
+    min-height: 60rem; /* Selecciona el tamaño mínimo que se van a ver la imagen sin importar el vh*/
+}
+.barra{
+    display: flex; /* Flexible box o flexbox: Lo que caracteriza un diseño flexible es su habilidad para alterar el ancho y alto de sus elementos para ajustarse lo mejor posible al espacio disponible en cualquier dispositivo. */
+    justify-content: space-between; /* Usa el espacio entre los dos elementos. No deja espacio por fuera  */
+                                    /* space-arround: Pone el mismo espacio antes y después de cada elemento. Pone x pixeles antes y x después de cada uno, por lo tanto antes del elemento 1 hay x px, pero entre el elemento 1 y el elemento 2, hay 2x pixeles de separación*/
+                                    /* space-evenly: Separa todos los elementos por igual, es decir, antes de el elemento 1 hay x px y entre el 1 y el 2, también hay x px y no 2x */
+    align-items: center; /*Alineación horizontal*/
+    padding-top: 3rem; /*Margen interior*/
+}
+.contenido-header{
+    height: 100%; /* Ocupa el 100% del espacio del padre, que en este caso es toda la pantalla, ya que es hijo de site-header. */
+    display: flex;
+    flex-direction: column; /* Ordenar las cajas de arriba a abajo */
+    justify-content: space-between; /* Ordena los elementos, pero al estar en vertical, pone uno arriba y otro abajo */
+}
+.contenido-header h1{ /* Texto del header */
+    color:#ffffff; 
+    padding-bottom: 2rem;
+    max-width: 60rem;
+    line-height: 2;
+}
+/***** NAVEGACIÓN *****/
+.navegacion a {
+    color: #ffffff; /* Para poner transparencia usaremos rgba(rojo, verde, azul, tranparencia (0 - 1))*/
+                      /* Para usar transparencias con hexadecimal, le añadiremos dos cifras mas */
+    text-decoration: none; /* Quita el subrayado de los enlaces */
+    font-size: 1.8rem; /*18px*/
+    margin-right: 2rem; /* Separación entre los elementos */
+}
+.navegacion a:hover{ /* Lo que ocurre cuando pones el ratón encima del enlace */
+    color: #71b100
+}
+.navegacion a:last-of-type{ /* Aplica este estilo al último elemento de ese tipo */
+    margin: 0;
+}
+
+/***** ICONOS NOSOTROS *****/
+.iconos-nosotros{ /* Separación de los apartados de sobre nosotros en home */
+    display: flex;
+    justify-content: space-between;
+}
+.icono{ /* Tamañao de los contenedores de "Sobre nosotros". 
+            Al ser 3, se separan un 33.3%, pero se le restan 10px para separar un poco mas*/
+    flex-basis: calc(33.3% - 1rem); /* = width */
+    text-align: center;
+}
+.icono h3{ /* Titulo de sobre nosotros*/
+    text-transform: uppercase;
+}
+
+/***** ANUNCIOS *****/
+.contenedor-anuncios{ /* Separar los anuncios */
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Poner varias lineas en el contenedor flexible */
+}
+.anuncio{ 
+    flex: 0 0 calc(33% - 1rem); /* Grow Shrink Basis*/
+    /*  flex-grow: 0; // Si el contenedor se puede expander, que se expanda 0 - 1 (on off)
+        flex-shrink: 0; // Si tiene definido un tamaño, que se pueda hacer menor que ese tamaño 0 - 1
+        flex-basis: calc(33.3% - 1rem); //Tamaño base de contenedor del anuncio */
+    border: 0.1rem solid #b5b5b5; /*width style color*/
+    /* Border style
+        -solid: una linea
+        -dotted: punteado
+        -dashed: a rayas
+        -double: dos lineas */
+    background-color: #f5f5f5;
+    margin-bottom: 2rem; /*Espacio exterior del div*/
+}
+.contenido-anuncio{
+    padding: 2rem; /* Espacio interior*/
+}
+.contenido-anuncio h3, 
+.contenido-anuncio p{ 
+    margin: 0; /* Por defecto, los parrafos y los encabezados tienen un margin que hace que aumente el espacio entre los elementos, con esto se lo quitamos */
+}
+.precio{
+    color: #71b100;
+    font-weight: 700;
+}
+.iconos-caracteristicas{ /* Iconos de los pisos (<ul> <li>) */
+    list-style: none;  /* Quitar el punto de la lista */
+    padding: 0;
+    display: flex;
+    justify-content: space-evenly;
+    max-width: 50rem; /* Limitamos el tamaño de la barra de iconos */
+    flex: 1; /* Le indicamos a la barra de iconos que mierntas que pueda, que se expanda */
+}
+.iconos-caracteristicas li{
+    display: flex; /* Poner la lista en horizontal */
+}
+.iconos-caracteristicas li img{
+    margin-right: 1.7rem;
+}
+.ver-todas{
+    display: flex;
+    justify-content: flex-end; /* Alinear botón a la derecha (al final del div) */
+}
+
+/***** Contacto home *****/
+.imagen-contacto{
+    background-image: url(../img/encuentra.jpg);
+    height: 40rem; /* Altura */
+    background-position: center center;
+    background-size: initial;
+    display: flex;
+    align-items: center;
+}
+.contenido-contacto{
+    flex: 1; /* Detecta el tamaño disponible en el div, detecta los elementos que hay y divide el espacio disponible entre los px disponible y le agrega ese espacio a cada uno. */
+    color: #ffffff;
+}
+.contenido-contacto p{
+    font-size: 1.8rem; /* Tamaño del párrafo */
+}
+
+/***** SECCIÓN INFERIOR *****/
+.seccion-inferior{
+    display: flex;
+    justify-content: space-between;
+}
+.seccion-inferior .blog{
+    flex-basis: 60%; /* Da el 60% del espacio para el blog */
+}
+.seccion-inferior .testimoniales{
+    flex-basis:calc(40% - 2rem); /* Calcula el 40% del espacio, le resta 20px y se lo da a los testimoniales */
+}
+.entrada-blog{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem; /* Espaciado exterior */
+}
+.entrada-blog:last-of-type{ /* Al ultimo elemento que tenga esta clase, le da un diseño distinto. */
+    margin-bottom: 0;
+}
+.entrada-blog .imagen{
+    flex-basis: 40%;
+}
+.entrada-blog .texto-entrada{
+    flex-basis: calc(60% - 3rem);
+}
+.texto-entrada h3{
+    margin: 0;
+    line-height: 1.2; /* Interliniado */
+}
+.texto-entrada a{
+    color: #000000;
+    text-decoration: none;
+}
+/* Dibujar una linea separadora */
+.texto-entrada h3::after{ /* pseudo-elemento ::after,  */
+    content: ''; /* Aquí podría ir texto, si lo dejamos vacío, solo usaremos el fondo del div*/
+    display: block; /* Que ocupe el 100% del espacio */
+    width: 15rem; /*Ancho 150 px*/
+    height: .5rem; /* Alto 5 px */
+    background-color: #71b100; 
+    margin-top: 1rem; /* Separación exterior superior 10px */
+}
+.texto-entrada span{
+    color: #e08709;
+}
+
+/***** TESTIMONIALES *****/
+.testimonial{
+    background-color: #71b100; /* Color del fondo */
+    font-size: 2.4rem;
+    padding: 2rem;
+    color: #ffffff; /* Color de la fuente*/
+    border-radius: 2rem; /* Curvatura del borde*/
+    /*border-bottom-left-radius:*/   
+}
+.testimonial blockquote::before{
+    content: '';
+    background-image: url(../img/comilla.svg); /* Añadir una imagen desde CSS*/
+    width: 4rem; /* Si no le damos un tamaño, no se verá */
+    height: 4rem;
+    position: absolute; /* Esta posición absoluta está dentro de un elemento que tiene una posición relativa, así que podemos moverlo por el elemento padre tanto como queramos con top bottom left right */
+    left: -2rem; /* Lo movemos 20px a la izquierda*/
+}
+.testimonial blockquote{
+    position: relative;/* Siempre que usas posición relativa y absoluta el elemento padre tiene que tener una posición relativa. Esto le dirá al navegador cual es la posición del elemento. */
+    padding-left: 5rem;
+    font-weight: 300;
+}
+.testimonial p{
+    text-align: right;
+}
+
+/*Footer*/
+.site-footer{
+    background-color: #333333;
+    margin: 0;
+}
+.copyright{
+    margin: 0;
+    color: #ffffff;
+}
+.contenedor-footer{
+    padding: 3rem 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+/** INTERNAS **/
+.contenido-nosotros{
+    display: grid; /* Forma para dividir el código. Unicamente coge los padres. Va por columnas. */
+    grid-template-columns: repeat(2, 1fr); /* El espacio que se le da a cada columna. */
+                                           /* gtc: 50% 50%. le da el 50% a las dos columnas
+                                              gtc: 1fr 1fr. le da 1 fracción idéntica a cada columna
+                                              gtc: repeat(2, 1fr); == gtc: 1fr 1fr;*/
+    grid-column-gap: 2rem; /* Separación entre las columnas */
+}
+
+.texto-nosotros blockquote{
+    font-weight: 900;
+    font-size: 2rem;
+    margin: 0;
+    padding: 1rem 0 1.5rem 0;
+}
+
+/***** DETALLES PROPIEDAD *****/
+.resumen-propiedad{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/** Contacto **/
+.contacto p{
+    font-size: 1.2rem;
+    color: #4f4f4f;
+    margin: 2rem 0 0 0;
+}
+legend{
+    font-size: 2rem;
+    color: #4f4f4f;
+}
+label{
+    font-weight: 700;
+    text-transform: uppercase; /* Etiquetas de los inputs en mayúsculas*/
+    display: block;
+}
+input:not([type="submit"]), /*Le da el estilo a todos los inputas excepto al tipo submit (Botón enviar)*/
+textarea,
+select{ 
+    padding: 1rem;
+    display: block;
+    width: 100%;
+    background-color: #e1e1e1;
+    margin-bottom: 1.5rem;
+    border: none;
+    border-radius: 1rem;
+    color: mediumpurple;
+}
+input[type="radio"]{
+    width: auto;
+    margin:0;
+}
+select{ 
+    -webkit-appearance: none; /* Para darle los estilos a los select, tenemos que usar un prefijo, que no son muy usuales, pero para este caso concreto es necesario, perderemos la flecha del desplegable*/
+    appearance: none;
+}
+textarea{
+    height: 20rem;
+}
+.forma-contacto{
+    max-width: 30rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
