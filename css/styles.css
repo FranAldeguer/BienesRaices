@@ -19,6 +19,7 @@ img{
     max-width: 100%;
 }
 .contenedor{
+    width: 95%;
     max-width: 120rem; /* Tamaño máximo del contenedor */
     margin: 0 auto; /* pone un margen de 0 arriga y abajo de todos los contenedores y margen automático a izquierda y derecha, por lo que queda centrado */
                     /* arriba derecha abajo izquierda */ /* arriba-abajo izquierda-derecha */
@@ -68,6 +69,14 @@ h4{
     display: inline-block; /*mirar .d-block*/
     text-align: center; /*centrar texto del botón*/
     border: none; /* Quitamos los bordes. Esto es mas que nada para los input type submit, ya que los enlaces ('a') no tiene borde por defecto.*/
+    display: block;
+    flex: 0 0 100%;
+}
+@media (min-width: 768px){
+    .boton{
+        display: inline;
+        flex: 0 0 auto;
+    }
 }
 .boton:hover{
     cursor: pointer; /*Cambiamos el cursor cuando el ratón se ponga encima de un botón*/
@@ -91,19 +100,12 @@ h4{
     height: 100vh; /* 100 viewport height: pone la altura de la pantalla para la imagen del fondo */
     min-height: 60rem; /* Selecciona el tamaño mínimo que se van a ver la imagen sin importar el vh*/
 }
-.barra{
-    display: flex; /* Flexible box o flexbox: Lo que caracteriza un diseño flexible es su habilidad para alterar el ancho y alto de sus elementos para ajustarse lo mejor posible al espacio disponible en cualquier dispositivo. */
-    justify-content: space-between; /* Usa el espacio entre los dos elementos. No deja espacio por fuera  */
-                                    /* space-arround: Pone el mismo espacio antes y después de cada elemento. Pone x pixeles antes y x después de cada uno, por lo tanto antes del elemento 1 hay x px, pero entre el elemento 1 y el elemento 2, hay 2x pixeles de separación*/
-                                    /* space-evenly: Separa todos los elementos por igual, es decir, antes de el elemento 1 hay x px y entre el 1 y el 2, también hay x px y no 2x */
-    align-items: center; /*Alineación horizontal*/
-    padding-top: 3rem; /*Margen interior*/
-}
 .contenido-header{
     height: 100%; /* Ocupa el 100% del espacio del padre, que en este caso es toda la pantalla, ya que es hijo de site-header. */
     display: flex;
     flex-direction: column; /* Ordenar las cajas de arriba a abajo */
     justify-content: space-between; /* Ordena los elementos, pero al estar en vertical, pone uno arriba y otro abajo */
+    text-align: center;
 }
 .contenido-header h1{ /* Texto del header */
     color:#ffffff; 
@@ -111,46 +113,77 @@ h4{
     max-width: 60rem;
     line-height: 2;
 }
+@media (min-width: 768px){
+    .contenido-header{
+        text-align: left;
+    }
+}
+.barra{
+    padding-top: 3rem; /*Margen interior*/
+}
+@media (min-width: 768px){
+    .barra{
+        display: flex; /* Flexible box o flexbox: Lo que caracteriza un diseño flexible es su habilidad para alterar el ancho y alto de sus elementos para ajustarse lo mejor posible al espacio disponible en cualquier dispositivo. */
+        justify-content: space-between; /* Usa el espacio entre los dos elementos. No deja espacio por fuera  */
+                                        /* space-arround: Pone el mismo espacio antes y después de cada elemento. Pone x pixeles antes y x después de cada uno, por lo tanto antes del elemento 1 hay x px, pero entre el elemento 1 y el elemento 2, hay 2x pixeles de separación*/
+                                        /* space-evenly: Separa todos los elementos por igual, es decir, antes de el elemento 1 hay x px y entre el 1 y el 2, también hay x px y no 2x */
+        align-items: center; /*Alineación horizontal*/
+    }
+}
+
 /***** NAVEGACIÓN *****/
 .navegacion a {
     color: #ffffff; /* Para poner transparencia usaremos rgba(rojo, verde, azul, tranparencia (0 - 1))*/
                       /* Para usar transparencias con hexadecimal, le añadiremos dos cifras mas */
     text-decoration: none; /* Quita el subrayado de los enlaces */
-    font-size: 1.8rem; /*18px*/
-    margin-right: 2rem; /* Separación entre los elementos */
+    font-size: 2.2rem; /*18px*/
+    display: block;
+}
+@media (min-width: 768px){
+    .navegacion a{
+        display: inline-block;
+        margin-right: 2rem; /* Separación entre los elementos */
+        font-size: 1.8rem;
+    }
+    .navegacion a:last-of-type{ /* Aplica este estilo al último elemento de ese tipo */
+        margin: 0;
+    }
 }
 .navegacion a:hover{ /* Lo que ocurre cuando pones el ratón encima del enlace */
     color: #71b100
 }
-.navegacion a:last-of-type{ /* Aplica este estilo al último elemento de ese tipo */
-    margin: 0;
-}
+
 
 /***** ICONOS NOSOTROS *****/
-.iconos-nosotros{ /* Separación de los apartados de sobre nosotros en home */
-    display: flex;
-    justify-content: space-between;
+@media (min-width: 768px){
+    .iconos-nosotros{ /* Separación de los apartados de sobre nosotros en home */
+        display: flex;
+        justify-content: space-between;
+    }
 }
-.icono{ /* Tamañao de los contenedores de "Sobre nosotros". 
+.icono{
+    text-align: center;
+}
+@media (min-width: 768px){
+        .icono{ /* Tamañao de los contenedores de "Sobre nosotros". 
             Al ser 3, se separan un 33.3%, pero se le restan 10px para separar un poco mas*/
     flex-basis: calc(33.3% - 1rem); /* = width */
-    text-align: center;
+    }
 }
 .icono h3{ /* Titulo de sobre nosotros*/
     text-transform: uppercase;
 }
 
 /***** ANUNCIOS *****/
-.contenedor-anuncios{ /* Separar los anuncios */
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap; /* Poner varias lineas en el contenedor flexible */
+@media (min-width: 768px){
+    .contenedor-anuncios{ /* Separar los anuncios */
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap; /* Poner varias lineas en el contenedor flexible */
+    }
 }
 .anuncio{ 
-    flex: 0 0 calc(33% - 1rem); /* Grow Shrink Basis*/
-    /*  flex-grow: 0; // Si el contenedor se puede expander, que se expanda 0 - 1 (on off)
-        flex-shrink: 0; // Si tiene definido un tamaño, que se pueda hacer menor que ese tamaño 0 - 1
-        flex-basis: calc(33.3% - 1rem); //Tamaño base de contenedor del anuncio */
+    
     border: 0.1rem solid #b5b5b5; /*width style color*/
     /* Border style
         -solid: una linea
@@ -159,6 +192,14 @@ h4{
         -double: dos lineas */
     background-color: #f5f5f5;
     margin-bottom: 2rem; /*Espacio exterior del div*/
+}
+@media (min-width: 768px){
+    .anuncio{
+        flex: 0 0 calc(33% - 1rem); /* Grow Shrink Basis*/
+    /*  flex-grow: 0; // Si el contenedor se puede expander, que se expanda 0 - 1 (on off)
+        flex-shrink: 0; // Si tiene definido un tamaño, que se pueda hacer menor que ese tamaño 0 - 1
+        flex-basis: calc(33.3% - 1rem); //Tamaño base de contenedor del anuncio */
+    }
 }
 .contenido-anuncio{
     padding: 2rem; /* Espacio interior*/
@@ -198,9 +239,10 @@ h4{
     background-size: initial;
     display: flex;
     align-items: center;
+
 }
 .contenido-contacto{
-    flex: 1; /* Detecta el tamaño disponible en el div, detecta los elementos que hay y divide el espacio disponible entre los px disponible y le agrega ese espacio a cada uno. */
+    flex: 0 0 95%; /* Detecta el tamaño disponible en el div, detecta los elementos que hay y divide el espacio disponible entre los px disponible y le agrega ese espacio a cada uno. */
     color: #ffffff;
 }
 .contenido-contacto p{
@@ -208,29 +250,37 @@ h4{
 }
 
 /***** SECCIÓN INFERIOR *****/
-.seccion-inferior{
-    display: flex;
-    justify-content: space-between;
-}
-.seccion-inferior .blog{
-    flex-basis: 60%; /* Da el 60% del espacio para el blog */
-}
-.seccion-inferior .testimoniales{
-    flex-basis:calc(40% - 2rem); /* Calcula el 40% del espacio, le resta 20px y se lo da a los testimoniales */
+@media (min-width: 768px){
+    .seccion-inferior{
+        display: flex;
+        justify-content: space-between;
+    }
+    .seccion-inferior .blog{
+        flex-basis: 60%; /* Da el 60% del espacio para el blog */
+    }
+    .seccion-inferior .testimoniales{
+        flex-basis:calc(40% - 2rem); /* Calcula el 40% del espacio, le resta 20px y se lo da a los testimoniales */
+    }
 }
 .entrada-blog{
-    display: flex;
-    justify-content: space-between;
     margin-bottom: 2rem; /* Espaciado exterior */
+}
+@media (min-width: 768px){
+    .entrada-blog{
+        display: flex;
+        justify-content: space-between;
+    }
 }
 .entrada-blog:last-of-type{ /* Al ultimo elemento que tenga esta clase, le da un diseño distinto. */
     margin-bottom: 0;
 }
-.entrada-blog .imagen{
-    flex-basis: 40%;
-}
-.entrada-blog .texto-entrada{
-    flex-basis: calc(60% - 3rem);
+@media (min-width: 768px){
+    .entrada-blog .imagen{
+        flex-basis: 40%;
+    }
+    .entrada-blog .texto-entrada{
+        flex-basis: calc(60% - 3rem);
+    }
 }
 .texto-entrada h3{
     margin: 0;
@@ -290,20 +340,34 @@ h4{
 }
 .contenedor-footer{
     padding: 3rem 0;
-    display: flex;
-    justify-content: space-between;
+    text-align: center;
 }
-
+@media (min-width: 768px){
+    .contenedor-footer{
+        display: flex;
+        justify-content: space-between;
+    }
+}
+.site-footer nav{
+    display: none;
+}
+@media (min-width: 768px){
+    .site-footer nav{
+        display: block;
+    }
+}
 /** INTERNAS **/
-.contenido-nosotros{
-    display: grid; /* Forma para dividir el código. Unicamente coge los padres. Va por columnas. */
-    grid-template-columns: repeat(2, 1fr); /* El espacio que se le da a cada columna. */
-                                           /* gtc: 50% 50%. le da el 50% a las dos columnas
-                                              gtc: 1fr 1fr. le da 1 fracción idéntica a cada columna
-                                              gtc: repeat(2, 1fr); == gtc: 1fr 1fr;*/
-    grid-column-gap: 2rem; /* Separación entre las columnas */
+/* Nosotros */
+@media (min-width: 768px){
+    .contenido-nosotros{
+        display: grid; /* Forma para dividir el código. Unicamente coge los padres. Va por columnas. */
+        grid-template-columns: repeat(2, 1fr); /* El espacio que se le da a cada columna. */
+                                            /* gtc: 50% 50%. le da el 50% a las dos columnas
+                                                gtc: 1fr 1fr. le da 1 fracción idéntica a cada columna
+                                                gtc: repeat(2, 1fr); == gtc: 1fr 1fr;*/
+        grid-column-gap: 2rem; /* Separación entre las columnas */
+    }
 }
-
 .texto-nosotros blockquote{
     font-weight: 900;
     font-size: 2rem;
