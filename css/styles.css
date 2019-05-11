@@ -21,7 +21,7 @@ img{
 .contenedor{
     width: 95%;
     max-width: 120rem; /* Tamaño máximo del contenedor */
-    margin: 0 auto; /* pone un margen de 0 arriga y abajo de todos los contenedores y margen automático a izquierda y derecha, por lo que queda centrado */
+    margin: 0 auto; /* pone un margen de 0 arriba y abajo de todos los contenedores y margen automático a izquierda y derecha, por lo que queda centrado */
                     /* arriba derecha abajo izquierda */ /* arriba-abajo izquierda-derecha */
                 }
 h1{
@@ -94,7 +94,7 @@ h4{
     padding: 1rem 0 3rem 0; /*top right bottom left */
 }
 .site-header.inicio {
-    background-image: url(../img/header.jpg); /* Seleccionar imagen. No se pone desde el archivo html */
+    background-image: url(../img/header.jpg); /* Seleccionar imagen de fondo del div. No se pone desde el archivo html */
     background-position: center center; /*muestra la imagen desde el centro, a tamaño completo*/
     background-size: cover; /*Crea el alto y ancho para que use el espacio que haya disponible, pero guardando las proporicones y cubriendo todo lo posible*/
     height: 100vh; /* 100 viewport height: pone la altura de la pantalla para la imagen del fondo */
@@ -186,7 +186,7 @@ h4{
     text-align: center;
 }
 @media (min-width: 768px){
-        .icono{ /* Tamañao de los contenedores de "Sobre nosotros". 
+        .icono{ /* Tamaño de los contenedores de "Sobre nosotros". 
             Al ser 3, se separan un 33.3%, pero se le restan 10px para separar un poco mas*/
     flex-basis: calc(33.3% - 1rem); /* = width */
     }
@@ -216,7 +216,7 @@ h4{
 }
 @media (min-width: 768px){
     .anuncio{
-        flex: 0 0 calc(33% - 1rem); /* Grow Shrink Basis*/
+        flex: 0 0 calc(33% - 1rem); /* Grow Shrink Basis*/ /*Crecer Encoger Base*/
     /*  flex-grow: 0; // Si el contenedor se puede expander, que se expanda 0 - 1 (on off)
         flex-shrink: 0; // Si tiene definido un tamaño, que se pueda hacer menor que ese tamaño 0 - 1
         flex-basis: calc(33.3% - 1rem); //Tamaño base de contenedor del anuncio */
